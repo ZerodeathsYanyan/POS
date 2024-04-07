@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS System</title>
+    <style>
+        .container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .menu-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            float: left;
+            width: calc(50% - 10px);
+            box-sizing: border-box;
+        }
+        .order-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            float: right;
+            width: calc(50% - 10px);
+            box-sizing: border-box;
+            width: 500px; 
+            height: 500px;
+            overflow: auto; 
+        }
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: calc(25% - 20px);
+            box-sizing: border-box;
+            display: inline-block;
+            text-align: center;
+            overflow: hidden;
+            height: auto;
+        }
+        .card h3 {
+            margin-top: 0;
+        }
+        .card p, .card button {
+            margin-bottom: 0; 
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        img {
+            width: 100%;
+            max-height: 100px;
+            object-fit: cover;
+        }
+        .btn-blue {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent-container">
+        <div class="menu-container">
+            <h2>Menu</h2>
+            <div class="card" id="product1">
+                <img src="Adobong Baboy.jpg" alt="Adobong Baboy Image">
+                <h3>Adobong Baboy</h3>
+                <p>Price: ₱45.00</p>
+                <label for="quantity1">Quantity:</label>
+                <input type="number" id="quantity1" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Adobong Baboy', 45.00, 'quantity1', 'Adobong Baboy.jpg')">Add to Order</button>
+            </div>
+            <div class="card" id="product2">
+                <img src="Tinola.jpg" alt="Tinola Image">
+                <h3>Tinola</h3>
+                <p>Price: ₱56.00</p>
+                <label for="quantity2">Quantity:</label>
+                <input type="number" id="quantity2" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Tinola', 56.00, 'quantity2', 'Tinola.jpg')">Add to Order</button>
+            </div>
+            <div class="card" id="product3">
+                <img src="Sinigang.jpg" alt="Sinigang" style="width: 100%; max-height: 100px; object-fit: cover;">
+                <h3>Sinigang</h3>
+                <p>Price: ₱85.00</p>
+                <label for="quantity3">Quantity:</label>
+                <input type="number" id="quantity3" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Sinigang', 85.00, 'quantity3', 'Sinigang.jpg')">Add to Order</button>
+            </div>
+            <div class="card" id="product4">
+                <img src="Buttered Garlic Chicken.jpg" alt="Buttered Garlic Chicken" style="width: 100%; max-height: 100px; object-fit: cover;">
+                <h3>Buttered Garlic Chicken</h3>
+                <p>Price: ₱85.00</p>
+                <label for="quantity4">Quantity:</label>
+                <input type="number" id="quantity4" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Buttered Garlic Chicken', 85.00, 'quantity4', 'Buttered Garlic Chicken.jpg')">Add to Order</button>
+            </div>
+            <div class="card" id="product5">
+                <img src="Buffalo-Wings-4.jpg" alt="Buffalo Wings" style="width: 100%; max-height: 100px; object-fit: cover;">
+                <h3>Buffalo Wings</h3>
+                <p>Price: ₱115.00</p>
+                <label for="quantity5">Quantity:</label>
+                <input type="number" id="quantity5" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Buffalo Wings', 115.00, 'quantity5', 'Buffalo-Wings-4.jpg')">Add to Order</button>
+            </div>
+            <div class="card" id="product6">
+                <img src="Liempo.webp" alt="Liempo" style="width: 100%; max-height: 100px; object-fit: cover;">
+                <h3>Liempo</h3>
+                <p>Price: ₱132.00</p>
+                <label for="quantity6">Quantity:</label>
+                <input type="number" id="quantity6" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Liempo', 132.00, 'quantity6', 'Liempo.webp')">Add to Order</button>
+            </div>
+            <div class="card" id="product7">
+                <img src="Inihaw na Manok.webp" alt="Inihaw na Manok" style="width: 100%; max-height: 100px; object-fit: cover;">
+                <h3>Inihaw na Manok</h3>
+                <p>Price: ₱169.00</p>
+                <label for="quantity7">Quantity:</label>
+                <input type="number" id="quantity7" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Inihaw na Manok', 169.00, 'quantity7', 'Inihaw na Manok.webp')">Add to Order</button>
+            </div>
+            <div class="card" id="product8">
+                <img src="Lechong Kawali.jpg" alt="Lechong Kawali" style="width: 100%; max-height: 100px; object-fit: cover;">
+                <h3>Lechong Kawali</h3>
+                <p>Price: ₱105.00</p>
+                <label for="quantity8">Quantity:</label>
+                <input type="number" id="quantity8" value="1" min="1" max="10">
+                <button class="btn-blue" onclick="addToOrder('Lechong Kawali', 105.00, 'quantity8', 'Lechong Kawali.jpg')">Add to Order</button>
+            </div>
+        </div>
+
+        <div class="order-container">
+            <h2>Ordered Items</h2>
+            <ul id="orderList">
+            </ul>
+            <div id="totalPrice"></div> 
+            <div>
+                <label for="paymentAmount">Enter Amount to Pay:</label>
+                <input type="number" id="paymentAmount" min="0" step="0.01">
+            </div>
+            <button class="btn-blue" onclick="placeOrder()">Pay</button>
+        </div>
+    </div>
+
+    <script>
+        var totalPrice = 0; 
+        var grandTotal = 0;
+    
+        function addToOrder(productName, price, quantityId, imageURL) {
+            var orderList = document.getElementById('orderList');
+            var quantity = parseInt(document.getElementById(quantityId).value);
+            var listItem = document.createElement('li');
+            
+            var image = document.createElement('img');
+            image.src = imageURL;
+            image.alt = productName + ' Image';
+            image.style.width = '100px';
+            
+            listItem.appendChild(image);
+            listItem.innerHTML += productName + ' - Quantity: ' + quantity + ', Total Price: ₱' + (price * quantity).toFixed(2);
+            orderList.appendChild(listItem);
+            var itemTotal = price * quantity;
+            totalPrice += itemTotal;
+            document.getElementById('totalPrice').innerText = 'Total Price: ₱' + totalPrice.toFixed(2); 
+            grandTotal += itemTotal;
+            document.getElementById('grandTotal').innerText = 'Grand Total: ₱' + grandTotal.toFixed(2);
+        }
+
+        function placeOrder() {
+            var paymentAmount = parseFloat(document.getElementById('paymentAmount').value);
+            if (isNaN(paymentAmount)) {
+                alert('Please enter a valid payment amount.');
+                return;
+            }
+            if (paymentAmount < grandTotal) {
+                alert('Insufficient funds. Please enter a larger amount.');
+                return;
+            }
+            var change = paymentAmount - grandTotal;
+            alert('Payment successful. Your change is ₱' + change.toFixed(2));
+            document.getElementById('orderList').innerHTML = '';
+            totalPrice = 0;
+            grandTotal = 0;
+            document.getElementById('totalPrice').innerText = '';
+            document.getElementById('paymentAmount').value = '';
+        }
+    </script>
+</body>
+</html>
